@@ -43,3 +43,33 @@ let prettySure: Object = 4
 let list3: any = [1, "hello"]
 list3[0] = 100
 list3[1] = 200
+
+// ---- void ----
+let unusable: void = undefined
+unusable = null // ok if '--strictNullChecks' is not given
+
+// ---- null and undefined ----
+// In TypeScript, both undefined and null actually have their own types named undefined and null respectively. 
+// Much like void, they’re not extremely useful on their own:
+let u: undefined = undefined
+let n: null = null
+
+// ---- never ----
+/*
+The never type represents the type of values that never occur. 
+For instance, never is the return type for a function expression or an arrow function expression that always throws an exception or one that never returns; 
+Variables also acquire the type never when narrowed by any type guards that can never be true.
+
+The never type is a subtype of, and assignable to, every type; however, no type is a subtype of, or assignable to, never (except never itself). 
+Even any isn’t assignable to never.
+*/
+// Function returning never must have unreachable end point
+function error(message: string): never {
+  throw new Error(message)
+}
+
+function infiniteLoop(): never {
+  while(true) {
+    
+  }
+}
